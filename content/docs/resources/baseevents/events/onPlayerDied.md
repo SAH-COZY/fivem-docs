@@ -25,4 +25,20 @@ int killerType, array deathCoords
 Examples
 --------
 
-TODO
+This example print all the data about the player death
+
+```lua
+AddEventHandler("baseevents:onPlayerDied", function(killerType, deathCoords)
+    PlayerNotify("Killer type: " .. killerType)
+    -- will be -1 if you are killed by a NPC
+
+    PlayerNotify(GetPlayerName(PlayerId()).." died")
+    
+    local streetHash, _ = GetStreetNameAtCoord(deathCoords[1], deathCoords[2], deathCoords[3])
+    PlayerNotify("Player died at " .. GetStreetNameFromHashKey(streetHash))
+end)
+```
+Result
+--------
+![](https://i.imgur.com/qdMDLw7.png)
+
